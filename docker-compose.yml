@@ -34,9 +34,9 @@ services:
     volumes:
       - ./data:/work/data
       - ./events:/work/events
-      - ./notebooks:/work/notebooks
       - ./resultats:/work/resultats
       - ./conf:/opt/spark/conf
+      - ./jobs:/work/jobs
 
   spark-history:
     image: projet-nba/spark:3.5.7
