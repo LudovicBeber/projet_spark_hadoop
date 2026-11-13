@@ -8,8 +8,8 @@ from pyspark.sql import SparkSession, functions as F, Window
 sys.path.insert(0, os.path.dirname(__file__))
 from schemas import SCHEMAS
 
-CSV = "/work/data/archive/csv"
-OUT = "/work/data/silver"
+CSV = "hdfs://namenode:9000/nba/raw"
+OUT = "hdfs://namenode:9000/nba/silver"
 Q = f"{OUT}/_quarantine"
 REPORT = "/work/resultats/controles_silver.md"
 
@@ -193,11 +193,11 @@ def main(sample=None):
     cached.unpersist()
 
     L.append("## État des données — Bronze → Silver\n")
-    evol = [("game + aux", "CSV data/archive/csv", R["game_lignes"],
-             R["games_silver"], "parquet data/silver/games",
+    evol = [("game + aux", "CSV /nba/raw", R["game_lignes"],
+             R["games_silver"], "parquet /nba/silver/games",
              f"{R['game_doublons_exact']} doublons exacts, {R['game_conflits']} conflits -> quarantaine"),
-            ("play_by_play", "CSV data/archive/csv", R["pbp_lignes"],
-             R["pbp_silver"], "parquet data/silver/play_by_play (partition annee)",
+            ("play_by_play", "CSV /nba/raw", R["pbp_lignes"],
+             R["pbp_silver"], "parquet /nba/silver/play_by_play (partition annee)",
              f"{R['pbp_doublons_exact']} doublons exacts, {R['pbp_conflits']} conflits, "
              f"{R['pbp_orphelins']} orphelins, {R['pbp_cles_nulles']} cles nulles, "
              f"{R['pbp_periodes_invalides']} periodes invalides")]
