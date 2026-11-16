@@ -249,10 +249,10 @@ def build_pbp(spark, games, R, sample=None, refresh=False):
 
 def write_report(R, cov):
     L = ["# Contrôles Silver\n", "## État des données — Bronze → Silver\n"]
-    evol = [("game + aux", "HDFS /nba/raw", R["game_lignes"],
+    evol = [("game + aux", "CSV HDFS /nba/raw", R["game_lignes"],
              R["games_silver"], "parquet HDFS /nba/silver/games",
              f"{R['game_doublons_exact']} doublons exacts, {R['game_conflits']} conflits -> quarantaine"),
-            ("play_by_play", "HDFS /nba/raw", R["pbp_lignes"],
+            ("play_by_play", "CSV HDFS /nba/raw", R["pbp_lignes"],
              R["pbp_silver"], "parquet HDFS /nba/silver/play_by_play (partition annee)",
              f"{R['pbp_doublons_exact']} doublons exacts, {R['pbp_conflits']} conflits, "
              f"{R['pbp_orphelins']} orphelins, {R['pbp_cles_nulles']} cles nulles, "
