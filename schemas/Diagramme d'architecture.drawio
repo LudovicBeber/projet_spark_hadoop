@@ -85,7 +85,7 @@
             <mxPoint x="700" y="428.00318725099584" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="uBL1tb5t5ztL9CB79LP7-22" value="data/gold/&lt;div&gt;5 tables parquet, 9 figures&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;" parent="1" vertex="1">
+        <mxCell id="uBL1tb5t5ztL9CB79LP7-22" value="data/gold/&lt;div&gt;5 tables parquet&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;" parent="1" vertex="1">
           <mxGeometry x="330" y="500" width="180" height="40" as="geometry" />
         </mxCell>
         <mxCell id="uBL1tb5t5ztL9CB79LP7-23" value="" style="endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;labelPadding=0 4;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="uBL1tb5t5ztL9CB79LP7-19" target="uBL1tb5t5ztL9CB79LP7-22" edge="1">
