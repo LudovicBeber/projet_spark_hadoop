@@ -124,9 +124,11 @@ PLAY_BY_PLAY = StructType(
      StructField("neutraldescription", StringType()),
      StructField("visitordescription", StringType()),
      StructField("score", StringType()),
-     StructField("scoremargin", DoubleType())] +
+     # "TIE" ou un entier signé -> lu en texte, converti en silver
+     StructField("scoremargin", StringType())] +
+    # person{i}type est écrit "4.0" dans le CSV : IntegerType le lirait en null
     [StructField(c, t) for i in (1, 2, 3) for c, t in
-     [(f"person{i}type", IntegerType()), (f"player{i}_id", StringType()),
+     [(f"person{i}type", DoubleType()), (f"player{i}_id", StringType()),
       (f"player{i}_name", StringType()), (f"player{i}_team_id", StringType()),
       (f"player{i}_team_city", StringType()), (f"player{i}_team_nickname", StringType()),
       (f"player{i}_team_abbreviation", StringType())]] +

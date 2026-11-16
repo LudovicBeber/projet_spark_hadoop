@@ -27,10 +27,14 @@ services:
     ports:
       - "8888:8888"
       - "4040:4040"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
     depends_on:
       - spark-master
+      - spark-worker
       - mongo
       - namenode
+      - datanode
     volumes:
       - ./data:/work/data
       - ./events:/work/events
@@ -56,6 +60,8 @@ services:
     command: streamlit run /work/dashboard/app.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true
     ports:
       - "8501:8501"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
     depends_on:
       - mongo
     volumes:
@@ -70,6 +76,7 @@ services:
 
   namenode:
     image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    hostname: namenode
     env_file:
       - hadoop.env
     environment:
@@ -83,6 +90,7 @@ services:
 
   datanode:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    hostname: datanode
     env_file:
       - hadoop.env
     environment:
